@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About - Гречкин Артем</title>
+  <meta name="description" content="Гречкин Артём, 14 лет. Создаю сайты и лендинги с помощью AI-инструментов.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <script src="https://unpkg.com/@phosphor-icons/web@2.1.1"></script>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Geist', 'system-ui', 'sans-serif'],
+          },
+          colors: {
+            base: {
+              50: '#fafaf9',
+              100: '#f5f5f4',
+              200: '#e7e5e4',
+              300: '#d6d3d1',
+              400: '#a8a29e',
+              500: '#78716c',
+              600: '#57534e',
+              700: '#44403c',
+              800: '#292524',
+              900: '#1c1917',
+              950: '#0c0a09',
+            },
+            accent: {
+              DEFAULT: '#c27830',
+              light: '#d4944a',
+              dark: '#a56320',
+              muted: 'rgba(194, 120, 48, 0.12)',
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    * { box-sizing: border-box; }
+
+    html {
+      -webkit-font-smoothing: antialiased;
+      scroll-behavior: smooth;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+      }
+      html { scroll-behavior: auto; }
+    }
+
+    .nav-glass {
+      backdrop-filter: blur(20px) saturate(1.4);
+      -webkit-backdrop-filter: blur(20px) saturate(1.4);
+      background: rgba(12, 10, 9, 0.72);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+                  transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .stagger > .reveal:nth-child(2) { transition-delay: 0.08s; }
+    .stagger > .reveal:nth-child(3) { transition-delay: 0.16s; }
+    .stagger > .reveal:nth-child(4) { transition-delay: 0.24s; }
+    .stagger > .reveal:nth-child(5) { transition-delay: 0.32s; }
+    .stagger > .reveal:nth-child(6) { transition-delay: 0.40s; }
+
+    .link-hover {
+      position: relative;
+    }
+    .link-hover::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 0;
+      height: 1.5px;
+      background: #c27830;
+      transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .link-hover:hover::after {
+      width: 100%;
+    }
+
+    .skill-pill {
+      border-color: rgb(41, 37, 36 / 0.6);
+      transition: border-color 0.25s ease;
+    }
+    .skill-pill:hover {
+      border-color: rgba(194, 120, 48, 0.4);
+    }
+
+    .btn-primary {
+      position: relative;
+      overflow: hidden;
+      transition: box-shadow 0.25s ease;
+    }
+    .btn-primary::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(255,255,255,0.15) 0%, transparent 60%);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    .btn-primary:hover::before {
+      opacity: 1;
+    }
+    .btn-primary:hover {
+      box-shadow: 0 8px 30px rgba(194, 120, 48, 0.25);
+    }
+
+    .service-card {
+      border-color: rgb(41, 37, 36 / 0.6);
+      transition: border-color 0.3s ease;
+    }
+    .service-card:hover {
+      border-color: rgba(194, 120, 48, 0.3);
+    }
+
+    .noise-bg::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      opacity: 0.03;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+      pointer-events: none;
+    }
+  </style>
+</head>
+
+<body class="bg-base-950 text-base-200 font-sans antialiased selection:bg-accent/20 selection:text-base-100">
+
+  <nav id="navbar" class="fixed top-4 left-1/2 -translate-x-1/2 z-50 w-[calc(100%-2rem)] max-w-2xl rounded-2xl nav-glass px-5 py-3 flex items-center justify-between opacity-0 -translate-y-4 transition-all duration-500" style="transition-delay: 0.3s;">
+    <a href="#hero" class="text-base-100 font-semibold text-sm tracking-tight">А.Г.</a>
+    <div class="flex items-center gap-5">
+      <a href="#about" class="text-base-400 text-sm link-hover transition-colors hover:text-base-200">Обо мне</a>
+      <a href="#skills" class="text-base-400 text-sm link-hover transition-colors hover:text-base-200">Навыки</a>
+      <a href="#services" class="text-base-400 text-sm link-hover transition-colors hover:text-base-200">Услуги</a>
+      <a href="#contact" class="text-base-400 text-sm link-hover transition-colors hover:text-base-200">Связь</a>
+    </div>
+  </nav>
+
+
+  <section id="hero" class="min-h-[100dvh] relative noise-bg overflow-hidden">
+    <div class="absolute inset-0 pointer-events-none" aria-hidden="true">
+      <div class="absolute top-0 left-[20%] w-px h-full bg-base-800/40"></div>
+      <div class="absolute top-0 left-[60%] w-px h-full bg-base-800/40"></div>
+      <div class="absolute top-[40%] left-0 w-full h-px bg-base-800/40"></div>
+    </div>
+
+    <div class="relative z-10 min-h-[100dvh] grid grid-cols-1 lg:grid-cols-12 gap-8 items-center px-6 md:px-12 lg:px-20 xl:px-28">
+
+      <div class="lg:col-span-7 space-y-6 pt-24 lg:pt-0">
+        <div class="reveal">
+          <span class="inline-flex items-center gap-2 text-accent text-xs font-medium tracking-widest uppercase mb-4">
+            <span class="w-8 h-px bg-accent"></span>
+            разработчик &bull; 14 лет
+          </span>
+        </div>
+
+        <h1 class="reveal text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-base-100 leading-[1.05] tracking-tight">
+          Гречкин<br>
+          <span class="text-base-400">Артём</span>
+        </h1>
+
+        <p class="reveal text-base-400 text-lg md:text-xl leading-relaxed max-w-lg">
+          Создаю сайты и digital-проекты с помощью AI-инструментов. Быстро, качественно и с вниманием к деталям.
+        </p>
+
+        <div class="reveal flex flex-wrap gap-3 pt-2">
+          <a href="#contact" class="btn-primary inline-flex items-center gap-2 bg-accent text-base-950 font-semibold px-6 py-3 rounded-xl text-sm">
+            <i class="ph ph-paper-plane-tilt text-base"></i>
+            Обсудить проект
+          </a>
+          <a href="#services" class="inline-flex items-center gap-2 border border-base-700 text-base-300 font-medium px-6 py-3 rounded-xl text-sm transition-colors hover:border-base-500 hover:text-base-100">
+            Что я делаю
+            <i class="ph ph-arrow-right text-base"></i>
+          </a>
+        </div>
+      </div>
+
+      <div class="hidden lg:flex lg:col-span-5 justify-end items-center">
+        <div class="relative">
+          <div class="w-72 h-72 xl:w-80 xl:h-80 rounded-3xl bg-base-900 border border-base-800/60 rotate-6 relative overflow-hidden">
+            <div class="absolute inset-0 bg-gradient-to-br from-accent/8 via-transparent to-transparent"></div>
+            <div class="absolute bottom-0 left-0 right-0 h-1/2 bg-gradient-to-t from-accent/5 to-transparent"></div>
+            <div class="absolute top-8 left-8 space-y-2 opacity-40">
+              <div class="h-2 w-16 bg-accent/30 rounded-full"></div>
+              <div class="h-2 w-24 bg-base-700 rounded-full"></div>
+              <div class="h-2 w-12 bg-accent/20 rounded-full"></div>
+              <div class="h-2 w-20 bg-base-700 rounded-full"></div>
+              <div class="h-2 w-8 bg-accent/15 rounded-full"></div>
+            </div>
+            <div class="absolute bottom-8 right-8 text-accent/20">
+              <i class="ph ph-brain text-7xl"></i>
+            </div>
+          </div>
+          <div class="absolute -bottom-4 -left-4 bg-base-800 border border-base-700/50 rounded-xl px-4 py-2 flex items-center gap-2">
+            <span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
+            <span class="text-xs text-base-400 font-medium">AI-native</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-40">
+      <span class="text-[10px] text-base-500 tracking-widest uppercase">вниз</span>
+      <div class="w-px h-8 bg-gradient-to-b from-base-500 to-transparent"></div>
+    </div>
+  </section>
+
+
+  <section id="about" class="relative py-24 md:py-32 px-6 md:px-12 lg:px-20 xl:px-28">
+    <div class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start">
+
+      <div class="lg:col-span-4">
+        <div class="reveal sticky top-28">
+          <span class="text-accent text-xs font-medium tracking-widest uppercase">Обо мне</span>
+          <h2 class="text-3xl md:text-4xl font-bold text-base-100 tracking-tight mt-3 leading-tight">
+            Четырнадцать лет,<br>
+            <span class="text-base-500">но уже с планом</span>
+          </h2>
+        </div>
+      </div>
+
+      <div class="lg:col-span-8 space-y-6">
+        <div class="reveal">
+          <p class="text-base-300 text-lg leading-relaxed">
+            Привет! Я Артём, мне 14 лет, и я занимаюсь созданием digital-продуктов. Не просто использую AI, а работаю с ним как с инструментом: знаю, как правильно ставить задачи, выбирать модели и получать нужный результат.
+          </p>
+        </div>
+        <div class="reveal">
+          <p class="text-base-400 text-lg leading-relaxed">
+            Меня привлекает скорость, с которой сейчас можно делать вещи. Раньше на лендинг уходили недели. Сейчас я могу собрать его за день, и он будет выглядеть так, будто его делала команда из пяти человек.
+          </p>
+        </div>
+        <div class="reveal">
+          <p class="text-base-400 text-lg leading-relaxed">
+            Я не просто «пользуюсь ChatGPT». Я понимаю, как работают промпты, какие модели лучше подходят для задач, и умею выстраивать процесс так, чтобы результат был предсказуемым.
+          </p>
+        </div>
+
+        <div class="reveal pt-6 grid grid-cols-3 gap-6 border-t border-base-800/60">
+          <div>
+            <div class="text-2xl font-bold text-base-100">14</div>
+            <div class="text-xs text-base-500 mt-1">лет</div>
+          </div>
+          <div>
+            <div class="text-2xl font-bold text-base-100">5+</div>
+            <div class="text-xs text-base-500 mt-1">AI-инструментов</div>
+          </div>
+          <div>
+            <div class="text-2xl font-bold text-base-100">∞</div>
+            <div class="text-xs text-base-500 mt-1">желания учиться</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <section id="skills" class="relative py-24 md:py-32 px-6 md:px-12 lg:px-20 xl:px-28 bg-base-900/50">
+    <div class="max-w-6xl mx-auto">
+
+      <div class="reveal mb-12">
+        <span class="text-accent text-xs font-medium tracking-widest uppercase">Навыки</span>
+        <h2 class="text-3xl md:text-4xl font-bold text-base-100 tracking-tight mt-3">
+          С чем работаю
+        </h2>
+        <p class="text-base-400 mt-3 max-w-md leading-relaxed">
+          Не просто знаю названия. Умею использовать каждый инструмент на практике.
+        </p>
+      </div>
+
+      <div class="stagger grid grid-cols-1 md:grid-cols-2 gap-4">
+
+        <div class="reveal skill-pill bg-base-900 border border-base-800/60 rounded-2xl p-6 flex items-start gap-4">
+          <div class="w-10 h-10 rounded-xl bg-accent/10 flex items-center justify-center flex-shrink-0">
+            <i class="ph ph-brain text-accent text-xl"></i>
+          </div>
+          <div>
+            <h3 class="text-base-100 font-semibold text-sm">Claude / ChatGPT</h3>
+            <p class="text-base-500 text-sm mt-1 leading-relaxed">Генерация текстов, кода, промпт-инжиниринг, анализ данных.</p>
+          </div>
+        </div>
+
+        <div class="reveal skill-pill bg-base-900 border border-base-800/60 rounded-2xl p-6 flex items-start gap-4">
+          <div class="w-10 h-10 rounded-xl bg-accent/10 flex items-center justify-center flex-shrink-0">
+            <i class="ph ph-palette text-accent text-xl"></i>
+          </div>
+          <div>
+            <h3 class="text-base-100 font-semibold text-sm">Midjourney / DALL-E</h3>
+            <p class="text-base-500 text-sm mt-1 leading-relaxed">Создание визуалов, иллюстраций, концептов для проектов.</p>
+          </div>
+        </div>
+
+        <div class="reveal skill-pill bg-base-900 border border-base-800/60 rounded-2xl p-6 flex items-start gap-4">
+          <div class="w-10 h-10 rounded-xl bg-accent/10 flex items-center justify-center flex-shrink-0">
+            <i class="ph ph-code text-accent text-xl"></i>
+          </div>
+          <div>
+            <h3 class="text-base-100 font-semibold text-sm">Cursor / Copilot</h3>
+            <p class="text-base-500 text-sm mt-1 leading-relaxed">Ускорение разработки, генерация кода, отладка.</p>
+          </div>
+        </div>
+
+        <div class="reveal skill-pill bg-base-900 border border-base-800/60 rounded-2xl p-6 flex items-start gap-4">
+          <div class="w-10 h-10 rounded-xl bg-accent/10 flex items-center justify-center flex-shrink-0">
+            <i class="ph ph-magic-wand text-accent text-xl"></i>
+          </div>
+          <div>
+            <h3 class="text-base-100 font-semibold text-sm">v0 / Bolt</h3>
+            <p class="text-base-500 text-sm mt-1 leading-relaxed">Быстрый прототайпинг UI, генерация интерфейсов из описания.</p>
+          </div>
+        </div>
+
+        <div class="reveal skill-pill bg-base-900 border border-base-800/60 rounded-2xl p-6 flex items-start gap-4 md:col-span-2 max-w-[calc(50%-0.5rem)]">
+          <div class="w-10 h-10 rounded-xl bg-accent/10 flex items-center justify-center flex-shrink-0">
+            <i class="ph ph-film-strip text-accent text-xl"></i>
+          </div>
+          <div>
+            <h3 class="text-base-100 font-semibold text-sm">Runway / ElevenLabs</h3>
+            <p class="text-base-500 text-sm mt-1 leading-relaxed">AI-видео и голос для мультимедийных проектов.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <section id="services" class="relative py-24 md:py-32 px-6 md:px-12 lg:px-20 xl:px-28">
+    <div class="max-w-6xl mx-auto">
+
+      <div class="reveal mb-12">
+        <span class="text-accent text-xs font-medium tracking-widest uppercase">Услуги</span>
+        <h2 class="text-3xl md:text-4xl font-bold text-base-100 tracking-tight mt-3">
+          Что я могу сделать
+        </h2>
+        <p class="text-base-400 mt-3 max-w-md leading-relaxed">
+          Конкретные вещи, за которые можно получить деньги.
+        </p>
+      </div>
+
+      <div class="stagger grid grid-cols-1 md:grid-cols-12 gap-4">
+
+        <div class="reveal service-card md:col-span-7 bg-base-900 border border-base-800/60 rounded-2xl p-7">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-10 h-10 rounded-xl bg-accent/10 flex items-center justify-center">
+              <i class="ph ph-browser text-accent text-xl"></i>
+            </div>
+            <h3 class="text-base-100 font-semibold">Лендинги и сайты</h3>
+          </div>
+          <p class="text-base-400 text-sm leading-relaxed">
+            Соберу лендинг или многостраничный сайт с нуля. Адаптивный дизайн, быстрая загрузка, чистый код. Без шаблонов, под вашу задачу.
+          </p>
+          <div class="mt-4 flex items-center gap-2 text-accent text-xs font-medium">
+            <span>от 3 000 ₽</span>
+            <span class="text-base-700">/</span>
+            <span class="text-base-500">проект</span>
+          </div>
+        </div>
+
+        <div class="reveal service-card md:col-span-5 bg-base-900 border border-base-800/60 rounded-2xl p-7">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-10 h-10 rounded-xl bg-accent/10 flex items-center justify-center">
+              <i class="ph ph-chat-circle-text text-accent text-xl"></i>
+            </div>
+            <h3 class="text-base-100 font-semibold">Контент с AI</h3>
+          </div>
+          <p class="text-base-400 text-sm leading-relaxed">
+            Посты, описания, презентации, тексты для сайтов. Генерирую быстро и с пониманием контекста.
+          </p>
+          <div class="mt-4 flex items-center gap-2 text-accent text-xs font-medium">
+            <span>от 500 ₽</span>
+            <span class="text-base-700">/</span>
+            <span class="text-base-500">текст</span>
+          </div>
+        </div>
+
+        <div class="reveal service-card md:col-span-5 bg-base-900 border border-base-800/60 rounded-2xl p-7">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-10 h-10 rounded-xl bg-accent/10 flex items-center justify-center">
+              <i class="ph ph-image text-accent text-xl"></i>
+            </div>
+            <h3 class="text-base-100 font-semibold">Визуал для соцсетей</h3>
+          </div>
+          <p class="text-base-400 text-sm leading-relaxed">
+            Обложки, баннеры, посты для Telegram, Instagram, VK. Стильные и в одном формате.
+          </p>
+          <div class="mt-4 flex items-center gap-2 text-accent text-xs font-medium">
+            <span>от 800 ₽</span>
+            <span class="text-base-700">/</span>
+            <span class="text-base-500">набор</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <section id="contact" class="relative py-24 md:py-32 px-6 md:px-12 lg:px-20 xl:px-28 bg-base-900/50">
+    <div class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start">
+
+      <div class="lg:col-span-5">
+        <div class="reveal">
+          <span class="text-accent text-xs font-medium tracking-widest uppercase">Контакт</span>
+          <h2 class="text-3xl md:text-4xl font-bold text-base-100 tracking-tight mt-3 leading-tight">
+            Есть задача?<br>
+            <span class="text-base-500">Напишите</span>
+          </h2>
+          <p class="text-base-400 mt-4 leading-relaxed">
+            Расскажите, что нужно сделать. Обсудим сроки и бюджет. Отвечаю быстро.
+          </p>
+        </div>
+      </div>
+
+      <div class="lg:col-span-7">
+        <form id="contact-form" class="reveal space-y-4" onsubmit="handleSubmit(event)">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label class="text-xs text-base-500 font-medium mb-1.5 block">Имя</label>
+              <input type="text" required placeholder="Как к вам обращаться"
+                class="w-full bg-base-900 border border-base-800 rounded-xl px-4 py-3 text-sm text-base-200 placeholder:text-base-600 focus:outline-none focus:border-accent/50 transition-colors">
+            </div>
+            <div>
+              <label class="text-xs text-base-500 font-medium mb-1.5 block">Контакт</label>
+              <input type="text" required placeholder="Telegram, email или телефон"
+                class="w-full bg-base-900 border border-base-800 rounded-xl px-4 py-3 text-sm text-base-200 placeholder:text-base-600 focus:outline-none focus:border-accent/50 transition-colors">
+            </div>
+          </div>
+          <div>
+            <label class="text-xs text-base-500 font-medium mb-1.5 block">Опишите задачу</label>
+            <textarea required rows="4" placeholder="Что нужно сделать? Какие сроки?"
+              class="w-full bg-base-900 border border-base-800 rounded-xl px-4 py-3 text-sm text-base-200 placeholder:text-base-600 focus:outline-none focus:border-accent/50 transition-colors resize-none"></textarea>
+          </div>
+          <button type="submit" class="btn-primary bg-accent text-base-950 font-semibold px-6 py-3 rounded-xl text-sm inline-flex items-center gap-2">
+            <i class="ph ph-paper-plane-tilt text-base"></i>
+            Отправить
+          </button>
+          <p id="form-status" class="text-sm text-green-400 hidden">Спасибо! Я свяжусь с вами в ближайшее время.</p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+
+  <footer class="py-8 px-6 md:px-12 lg:px-20 xl:px-28 border-t border-base-800/40">
+    <div class="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+      <span class="text-base-600 text-xs">&copy; 2026 Гречкин Артём</span>
+      <div class="flex items-center gap-4">
+        <a href="https://t.me/Aerosimtop" target="_blank" rel="noopener" class="text-base-600 hover:text-accent transition-colors" aria-label="Telegram">
+          <i class="ph ph-telegram-logo text-lg"></i>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+
+  <script>
+    (() => {
+      const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+      if (isTouchDevice) return;
+
+      let currentY = window.scrollY;
+      let targetY = window.scrollY;
+      let isScrolling = false;
+      const ease = 0.08;
+      const raf = () => {
+        currentY += (targetY - currentY) * ease;
+        if (Math.abs(targetY - currentY) < 0.5) {
+          currentY = targetY;
+          isScrolling = false;
+        }
+        window.scrollTo(0, currentY);
+        if (isScrolling) requestAnimationFrame(raf);
+      };
+      window.addEventListener('wheel', (e) => {
+        e.preventDefault();
+        targetY = Math.max(0, Math.min(targetY + e.deltaY, document.body.scrollHeight - window.innerHeight));
+        if (!isScrolling) {
+          isScrolling = true;
+          requestAnimationFrame(raf);
+        }
+      }, { passive: false });
+      window.addEventListener('scroll', () => {
+        if (!isScrolling) currentY = window.scrollY;
+      }, { passive: true });
+      document.querySelectorAll('a[href^="#"]').forEach(a => {
+        a.addEventListener('click', (e) => {
+          e.preventDefault();
+          const el = document.querySelector(a.getAttribute('href'));
+          if (el) {
+            targetY = el.offsetTop - 80;
+            if (!isScrolling) {
+              isScrolling = true;
+              requestAnimationFrame(raf);
+            }
+          }
+        });
+      });
+    })();
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    window.addEventListener('load', () => {
+      setTimeout(() => {
+        document.getElementById('navbar').classList.remove('opacity-0', '-translate-y-4');
+        document.getElementById('navbar').classList.add('opacity-100', 'translate-y-0');
+      }, 400);
+    });
+
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('#navbar a');
+
+    const highlightNav = () => {
+      const scrollY = window.scrollY + 100;
+      sections.forEach(section => {
+        const top = section.offsetTop;
+        const height = section.offsetHeight;
+        const id = section.getAttribute('id');
+        if (scrollY >= top && scrollY < top + height) {
+          navLinks.forEach(link => {
+            link.classList.remove('text-base-200');
+            link.classList.add('text-base-400');
+            if (link.getAttribute('href') === '#' + id) {
+              link.classList.remove('text-base-400');
+              link.classList.add('text-base-200');
+            }
+          });
+        }
+      });
+    };
+    window.addEventListener('scroll', highlightNav, { passive: true });
+    highlightNav();
+
+    const API_URL = 'https://feedbackDeevv.pythonanywhere.com/api/send';
+
+    function handleSubmit(e) {
+      e.preventDefault();
+      const form = e.target;
+      const name = form.querySelector('input[type="text"]').value;
+      const contact = form.querySelectorAll('input[type="text"]')[1].value;
+      const message = form.querySelector('textarea').value;
+      const btn = form.querySelector('button[type="submit"]');
+      const status = document.getElementById('form-status');
+
+      btn.disabled = true;
+      btn.innerHTML = '<i class="ph ph-spinner text-base animate-spin"></i> Отправка...';
+
+      fetch(API_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name, contact, message })
+      })
+      .then(res => res.json())
+      .then(data => {
+        if (data.ok) {
+          status.textContent = 'Спасибо! Заявка отправлена. Свяжусь в ближайшее время.';
+          status.className = 'text-sm text-green-400';
+        } else {
+          status.textContent = 'Ошибка отправки. Попробуйте позже.';
+          status.className = 'text-sm text-red-400';
+        }
+        status.classList.remove('hidden');
+        form.reset();
+        btn.disabled = false;
+        btn.innerHTML = '<i class="ph ph-paper-plane-tilt text-base"></i> Отправить';
+        setTimeout(() => status.classList.add('hidden'), 5000);
+      })
+      .catch(() => {
+        status.textContent = 'Ошибка сети. Проверьте интернет.';
+        status.className = 'text-sm text-red-400';
+        status.classList.remove('hidden');
+        btn.disabled = false;
+        btn.innerHTML = '<i class="ph ph-paper-plane-tilt text-base"></i> Отправить';
+        setTimeout(() => status.classList.add('hidden'), 5000);
+      });
+    }
+  </script>
+
+</body>
+</html>
